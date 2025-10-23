@@ -1479,10 +1479,12 @@ border-radius: 0px;
 
 
 
-<h1 class="title toc-ignore">Bayesian binomial model</h1>
+<h1 class="title toc-ignore"><strong>Bayesian binomial
+model</strong></h1>
 <h3 class="subtitle">Estimation of the frequency of neurocysticercosis
 among people with headache</h3>
-<h4 class="author">Mohammad Shah Jalal, University of Montreal</h4>
+<h4 class="author"><strong>Mohammad Shah Jalal, University of
+Montreal</strong></h4>
 <h4 class="date">2025-01-11</h4>
 
 </div>
@@ -1490,8 +1492,9 @@ among people with headache</h3>
 
 <p>Before talking about Bayesian binomial model, let’s review some
 important concepts.</p>
-<div id="binomial-distribution" class="section level1">
-<h1>Binomial distribution</h1>
+<div id="binomial-distribution" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> <strong>Binomial
+distribution</strong></h1>
 <p>The <strong>binomial distribution</strong> is a probability
 distribution that summarizes the likelihood that a value will take one
 of two independent states across a given number of trials. The binomial
@@ -1628,8 +1631,9 @@ probability of the prevalence being between 2% and 4% is
 think about uncertainty.</p>
 <hr />
 </div>
-<div id="how-bayesian-statistics-work" class="section level1">
-<h1>How Bayesian statistics work?</h1>
+<div id="how-bayesian-statistics-work" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> <strong>How Bayesian
+statistics work?</strong></h1>
 <p>Bayesian statistics provide a way to update our beliefs about an
 unknown parameter (such as disease prevalence) based on observed
 data.</p>
@@ -1667,8 +1671,9 @@ uncertainty about the parameter itself. So, in Bayesian we assume
 (*****That is very important****)</strong>. It has own distribution.</p>
 <p>For a bit more about Bayesian dtatistics visit: <a href="https://jalal2025.quarto.pub/my-web/Bayesian_statistics_course.html" class="uri">https://jalal2025.quarto.pub/my-web/Bayesian_statistics_course.html</a></p>
 </div>
-<div id="bayesian-binomial-model" class="section level1">
-<h1>Bayesian binomial model</h1>
+<div id="bayesian-binomial-model" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> <strong>Bayesian
+binomial model</strong></h1>
 <p>The <strong>Bayesian binomial model</strong> is a statistical
 approach used to estimate the <strong>proportion or prevalence of a
 binary outcome</strong>, such as the presence or absence of a disease.
@@ -1858,10 +1863,12 @@ set.</p></li>
 <li><p>We present the results in a nice table.</p></li>
 </ul>
 </div>
-<div id="applying-bayesian-binomial-model-with-real-data" class="section level1">
-<h1>Applying Bayesian binomial model with real data</h1>
-<div id="description-of-data-set" class="section level2">
-<h2>Description of data set</h2>
+<div id="applying-bayesian-binomial-model-with-real-data" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> <strong>Applying
+Bayesian binomial model with real data</strong></h1>
+<div id="description-of-data-set" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> <strong>Description
+of data set</strong></h2>
 <p>We have recently completed a brief systematic review of research
 articles reporting the frequency of neurocysticercosis (NCC, a parasitic
 disease of human central nervous system caused by the larval stage of
@@ -1887,7 +1894,21 @@ folder, otherwise may require to set working directory manually using
 <pre class="r"><code>library(here)
 tdat &lt;- read_excel(here(&quot;Data&quot;, &quot;NCC_among_PWH.xlsx&quot;))                  
 
-## Working data set
+tdat</code></pre>
+<pre><code>## # A tibble: 10 × 5
+##        id first_author            study_setting          n     y
+##     &lt;dbl&gt; &lt;chr&gt;                   &lt;chr&gt;              &lt;dbl&gt; &lt;dbl&gt;
+##  1 500001 Pradhan et al           Clinic_or_hospital   166    72
+##  2 500002 Valtis et al            Clinic_or_hospital   924   119
+##  3 500003 deOliveiraTaveira et al Clinic_or_hospital   108    12
+##  4 500004 DelBrutto et al         Clinic_or_hospital  1017    48
+##  5 500005 Sanchez et al           Clinic_or_hospital    16    12
+##  6 500006 Cruz et al              Community             69    21
+##  7 500007 Stelzle et al           Clinic_or_hospital    17     0
+##  8 500008 Moyano et al            Community              3     2
+##  9 500009 Valenca et al           Clinic_or_hospital    78     3
+## 10 500010 Unpublished             Community            131    10</code></pre>
+<pre class="r"><code>## Working data set
 df &lt;- tdat</code></pre>
 <p>Let’s check what are the data we have,</p>
 <pre class="r"><code>glimpse(df)</code></pre>
@@ -1950,8 +1971,9 @@ model.</p></li>
 results.</p></li>
 </ol>
 </div>
-<div id="model" class="section level2">
-<h2>Model</h2>
+<div id="model" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span>
+<strong>Model</strong></h2>
 <p>The model assumes that the number of NCC cases <span class="math inline">\(y_i\)</span> in study <span class="math inline">\(i\)</span> follows a binomial distribution with
 study-specific sample size <span class="math inline">\(n_i\)</span> and
 probability parameter <span class="math inline">\(p_i\)</span>:</p>
@@ -1997,8 +2019,9 @@ y_rep[i] = binomial_rng (n[i],p[i]);
 &quot;
 compiled_model &lt;- stan_model(model_code = model_code)</code></pre>
 </div>
-<div id="data-preparation" class="section level2">
-<h2>Data preparation</h2>
+<div id="data-preparation" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> <strong>Data
+preparation</strong></h2>
 <pre class="r"><code>df &lt;- df %&gt;% 
   mutate(st_id = paste0(&quot;St_&quot;,id))
 
@@ -2014,8 +2037,9 @@ model_data &lt;- list(
   beta_prior =1
 )</code></pre>
 </div>
-<div id="fit-the-model" class="section level2">
-<h2>Fit the model</h2>
+<div id="fit-the-model" class="section level2" number="4.4">
+<h2><span class="header-section-number">4.4</span> <strong>Fit the
+model</strong></h2>
 <pre class="r"><code>## Fit the model
 fit &lt;- sampling(
   compiled_model,
@@ -2031,10 +2055,12 @@ case, we will not need to run the model, again we can just, check the
 <pre class="r"><code>library(here)
 saveRDS(fit, file = here(&quot;Outputs&quot;, &quot;Bayesian_model_results.rds&quot;))</code></pre>
 </div>
-<div id="results" class="section level2">
-<h2>Results</h2>
-<div id="model-convergence-checking" class="section level3">
-<h3>Model convergence checking</h3>
+<div id="results" class="section level2" number="4.5">
+<h2><span class="header-section-number">4.5</span>
+<strong>Results</strong></h2>
+<div id="model-convergence-checking" class="section level3" number="4.5.1">
+<h3><span class="header-section-number">4.5.1</span> <strong>Model
+convergence checking</strong></h3>
 <p>First, reload the model and print the results</p>
 <pre class="r"><code>library(here)
 x &lt;- readRDS(here(&quot;Outputs&quot;,&quot;Bayesian_model_results.rds&quot;))
@@ -2082,8 +2108,9 @@ different plots there is an amazing function
 studies using Bayesian binomial model.</p>
 <p>Now, we want to present the results in a nice table.</p>
 </div>
-<div id="creating-a-table-for-publication" class="section level3">
-<h3>Creating a table for publication</h3>
+<div id="creating-a-table-for-publication" class="section level3" number="4.5.2">
+<h3><span class="header-section-number">4.5.2</span> <strong>Creating a
+table for publication</strong></h3>
 <pre class="r"><code># Extract posterior samples
 posterior_samples &lt;- extract(x)
 
@@ -2113,7 +2140,6 @@ df2 &lt;- df %&gt;%
   select(id,first_author,study_setting,Prop)
 
 
-# More robust table code:
 table &lt;- df2 %&gt;%
   arrange(id) %&gt;% 
   gt() %&gt;% 
@@ -2121,7 +2147,19 @@ table &lt;- df2 %&gt;%
     id = &quot;Study ID&quot;,
     first_author = &quot;Reference&quot;, 
     study_setting = &quot;Setting&quot;,
-    Prop = &quot;Bayesian estimate\n%(95% CrI)&quot;
+    Prop = md(&quot;Bayesian estimate&lt;br&gt;%(95% CrI)&quot;)
+  ) %&gt;%
+  tab_style(
+    style = cell_text(weight = &quot;bold&quot;),
+    locations = cells_column_labels()
+  ) %&gt;%
+  tab_style(
+    style = cell_text(align = &quot;center&quot;),
+    locations = cells_column_labels()
+  ) %&gt;%
+  tab_style(
+    style = cell_text(align = &quot;center&quot;),
+    locations = cells_body()
   ) %&gt;%
   fmt_number(
     columns = c(id),
@@ -2131,7 +2169,6 @@ table &lt;- df2 %&gt;%
             locations = cells_body(rows = seq(1, nrow(df2), 2))) %&gt;% 
   tab_options(
     table.font.size = px(12),
-    heading.align = &quot;center&quot;,
     table.font.names = &quot;Times New Roman&quot;
   )
 
@@ -2535,54 +2572,53 @@ height: 0px !important;
 <table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
   <thead>
     <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="id">Study ID</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="first_author">Reference</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="study_setting">Setting</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Prop">Bayesian estimate
-%(95% CrI)</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="font-weight: bold; text-align: center;" scope="col" id="id">Study ID</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="font-weight: bold; text-align: center;" scope="col" id="first_author">Reference</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="font-weight: bold; text-align: center;" scope="col" id="study_setting">Setting</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="font-weight: bold; text-align: center;" scope="col" id="Prop"><span class="gt_from_md">Bayesian estimate<br>%(95% CrI)</span></th>
     </tr>
   </thead>
   <tbody class="gt_table_body">
-    <tr><td headers="id" class="gt_row gt_right" style="background-color: #D3D3D3;">500,001</td>
-<td headers="first_author" class="gt_row gt_left" style="background-color: #D3D3D3;">Pradhan et al</td>
-<td headers="study_setting" class="gt_row gt_left" style="background-color: #D3D3D3;">Health center</td>
-<td headers="Prop" class="gt_row gt_right" style="background-color: #D3D3D3;">43.4 (35.9 - 51.1)</td></tr>
-    <tr><td headers="id" class="gt_row gt_right">500,002</td>
-<td headers="first_author" class="gt_row gt_left">Valtis et al</td>
-<td headers="study_setting" class="gt_row gt_left">Health center</td>
-<td headers="Prop" class="gt_row gt_right">12.9 (10.9 - 15.1)</td></tr>
-    <tr><td headers="id" class="gt_row gt_right" style="background-color: #D3D3D3;">500,003</td>
-<td headers="first_author" class="gt_row gt_left" style="background-color: #D3D3D3;">deOliveiraTaveira et al</td>
-<td headers="study_setting" class="gt_row gt_left" style="background-color: #D3D3D3;">Health center</td>
-<td headers="Prop" class="gt_row gt_right" style="background-color: #D3D3D3;">11.6 (6.6 - 18.4)</td></tr>
-    <tr><td headers="id" class="gt_row gt_right">500,004</td>
-<td headers="first_author" class="gt_row gt_left">DelBrutto et al</td>
-<td headers="study_setting" class="gt_row gt_left">Health center</td>
-<td headers="Prop" class="gt_row gt_right">4.8 (3.6 - 6.2)</td></tr>
-    <tr><td headers="id" class="gt_row gt_right" style="background-color: #D3D3D3;">500,005</td>
-<td headers="first_author" class="gt_row gt_left" style="background-color: #D3D3D3;">Sanchez et al</td>
-<td headers="study_setting" class="gt_row gt_left" style="background-color: #D3D3D3;">Health center</td>
-<td headers="Prop" class="gt_row gt_right" style="background-color: #D3D3D3;">73.1 (50.3 - 89.7)</td></tr>
-    <tr><td headers="id" class="gt_row gt_right">500,006</td>
-<td headers="first_author" class="gt_row gt_left">Cruz et al</td>
-<td headers="study_setting" class="gt_row gt_left">Community</td>
-<td headers="Prop" class="gt_row gt_right">30.8 (20.9 - 42.1)</td></tr>
-    <tr><td headers="id" class="gt_row gt_right" style="background-color: #D3D3D3;">500,007</td>
-<td headers="first_author" class="gt_row gt_left" style="background-color: #D3D3D3;">Stelzle et al</td>
-<td headers="study_setting" class="gt_row gt_left" style="background-color: #D3D3D3;">Health center</td>
-<td headers="Prop" class="gt_row gt_right" style="background-color: #D3D3D3;">3.8 (0.1 - 18.9)</td></tr>
-    <tr><td headers="id" class="gt_row gt_right">500,008</td>
-<td headers="first_author" class="gt_row gt_left">Moyano et al</td>
-<td headers="study_setting" class="gt_row gt_left">Community</td>
-<td headers="Prop" class="gt_row gt_right">61.2 (19.6 - 93.1)</td></tr>
-    <tr><td headers="id" class="gt_row gt_right" style="background-color: #D3D3D3;">500,009</td>
-<td headers="first_author" class="gt_row gt_left" style="background-color: #D3D3D3;">Valenca et al</td>
-<td headers="study_setting" class="gt_row gt_left" style="background-color: #D3D3D3;">Health center</td>
-<td headers="Prop" class="gt_row gt_right" style="background-color: #D3D3D3;">4.6 (1.4 - 10.8)</td></tr>
-    <tr><td headers="id" class="gt_row gt_right">500,010</td>
-<td headers="first_author" class="gt_row gt_left">Unpublished</td>
-<td headers="study_setting" class="gt_row gt_left">Community</td>
-<td headers="Prop" class="gt_row gt_right">8.1 (4.3 - 13.6)</td></tr>
+    <tr><td headers="id" class="gt_row gt_right" style="text-align: center; background-color: #D3D3D3;">500,001</td>
+<td headers="first_author" class="gt_row gt_left" style="text-align: center; background-color: #D3D3D3;">Pradhan et al</td>
+<td headers="study_setting" class="gt_row gt_left" style="text-align: center; background-color: #D3D3D3;">Health center</td>
+<td headers="Prop" class="gt_row gt_right" style="text-align: center; background-color: #D3D3D3;">43.4 (35.9 - 51.1)</td></tr>
+    <tr><td headers="id" class="gt_row gt_right" style="text-align: center;">500,002</td>
+<td headers="first_author" class="gt_row gt_left" style="text-align: center;">Valtis et al</td>
+<td headers="study_setting" class="gt_row gt_left" style="text-align: center;">Health center</td>
+<td headers="Prop" class="gt_row gt_right" style="text-align: center;">12.9 (10.9 - 15.1)</td></tr>
+    <tr><td headers="id" class="gt_row gt_right" style="text-align: center; background-color: #D3D3D3;">500,003</td>
+<td headers="first_author" class="gt_row gt_left" style="text-align: center; background-color: #D3D3D3;">deOliveiraTaveira et al</td>
+<td headers="study_setting" class="gt_row gt_left" style="text-align: center; background-color: #D3D3D3;">Health center</td>
+<td headers="Prop" class="gt_row gt_right" style="text-align: center; background-color: #D3D3D3;">11.6 (6.6 - 18.4)</td></tr>
+    <tr><td headers="id" class="gt_row gt_right" style="text-align: center;">500,004</td>
+<td headers="first_author" class="gt_row gt_left" style="text-align: center;">DelBrutto et al</td>
+<td headers="study_setting" class="gt_row gt_left" style="text-align: center;">Health center</td>
+<td headers="Prop" class="gt_row gt_right" style="text-align: center;">4.8 (3.6 - 6.2)</td></tr>
+    <tr><td headers="id" class="gt_row gt_right" style="text-align: center; background-color: #D3D3D3;">500,005</td>
+<td headers="first_author" class="gt_row gt_left" style="text-align: center; background-color: #D3D3D3;">Sanchez et al</td>
+<td headers="study_setting" class="gt_row gt_left" style="text-align: center; background-color: #D3D3D3;">Health center</td>
+<td headers="Prop" class="gt_row gt_right" style="text-align: center; background-color: #D3D3D3;">73.1 (50.3 - 89.7)</td></tr>
+    <tr><td headers="id" class="gt_row gt_right" style="text-align: center;">500,006</td>
+<td headers="first_author" class="gt_row gt_left" style="text-align: center;">Cruz et al</td>
+<td headers="study_setting" class="gt_row gt_left" style="text-align: center;">Community</td>
+<td headers="Prop" class="gt_row gt_right" style="text-align: center;">30.8 (20.9 - 42.1)</td></tr>
+    <tr><td headers="id" class="gt_row gt_right" style="text-align: center; background-color: #D3D3D3;">500,007</td>
+<td headers="first_author" class="gt_row gt_left" style="text-align: center; background-color: #D3D3D3;">Stelzle et al</td>
+<td headers="study_setting" class="gt_row gt_left" style="text-align: center; background-color: #D3D3D3;">Health center</td>
+<td headers="Prop" class="gt_row gt_right" style="text-align: center; background-color: #D3D3D3;">3.8 (0.1 - 18.9)</td></tr>
+    <tr><td headers="id" class="gt_row gt_right" style="text-align: center;">500,008</td>
+<td headers="first_author" class="gt_row gt_left" style="text-align: center;">Moyano et al</td>
+<td headers="study_setting" class="gt_row gt_left" style="text-align: center;">Community</td>
+<td headers="Prop" class="gt_row gt_right" style="text-align: center;">61.2 (19.6 - 93.1)</td></tr>
+    <tr><td headers="id" class="gt_row gt_right" style="text-align: center; background-color: #D3D3D3;">500,009</td>
+<td headers="first_author" class="gt_row gt_left" style="text-align: center; background-color: #D3D3D3;">Valenca et al</td>
+<td headers="study_setting" class="gt_row gt_left" style="text-align: center; background-color: #D3D3D3;">Health center</td>
+<td headers="Prop" class="gt_row gt_right" style="text-align: center; background-color: #D3D3D3;">4.6 (1.4 - 10.8)</td></tr>
+    <tr><td headers="id" class="gt_row gt_right" style="text-align: center;">500,010</td>
+<td headers="first_author" class="gt_row gt_left" style="text-align: center;">Unpublished</td>
+<td headers="study_setting" class="gt_row gt_left" style="text-align: center;">Community</td>
+<td headers="Prop" class="gt_row gt_right" style="text-align: center;">8.1 (4.3 - 13.6)</td></tr>
   </tbody>
   
 </table>
@@ -2659,20 +2695,20 @@ table &lt;- df2 %&gt;%
 
 table_html &lt;- table %&gt;% as_raw_html()
 table</code></pre>
-<div id="hmjvqitwks" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#hmjvqitwks table {
+<div id="jvqitwksjj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#jvqitwksjj table {
 font-family: 'Times New Roman';
 -webkit-font-smoothing: antialiased;
 -moz-osx-font-smoothing: grayscale;
 }
-#hmjvqitwks thead, #hmjvqitwks tbody, #hmjvqitwks tfoot, #hmjvqitwks tr, #hmjvqitwks td, #hmjvqitwks th {
+#jvqitwksjj thead, #jvqitwksjj tbody, #jvqitwksjj tfoot, #jvqitwksjj tr, #jvqitwksjj td, #jvqitwksjj th {
 border-style: none;
 }
-#hmjvqitwks p {
+#jvqitwksjj p {
 margin: 0;
 padding: 0;
 }
-#hmjvqitwks .gt_table {
+#jvqitwksjj .gt_table {
 display: table;
 border-collapse: collapse;
 line-height: normal;
@@ -2697,11 +2733,11 @@ border-left-style: none;
 border-left-width: 2px;
 border-left-color: #D3D3D3;
 }
-#hmjvqitwks .gt_caption {
+#jvqitwksjj .gt_caption {
 padding-top: 4px;
 padding-bottom: 4px;
 }
-#hmjvqitwks .gt_title {
+#jvqitwksjj .gt_title {
 color: #333333;
 font-size: 125%;
 font-weight: initial;
@@ -2712,7 +2748,7 @@ padding-right: 5px;
 border-bottom-color: #FFFFFF;
 border-bottom-width: 0;
 }
-#hmjvqitwks .gt_subtitle {
+#jvqitwksjj .gt_subtitle {
 color: #333333;
 font-size: 85%;
 font-weight: initial;
@@ -2723,7 +2759,7 @@ padding-right: 5px;
 border-top-color: #FFFFFF;
 border-top-width: 0;
 }
-#hmjvqitwks .gt_heading {
+#jvqitwksjj .gt_heading {
 background-color: #FFFFFF;
 text-align: center;
 border-bottom-color: #FFFFFF;
@@ -2734,12 +2770,12 @@ border-right-style: none;
 border-right-width: 1px;
 border-right-color: #D3D3D3;
 }
-#hmjvqitwks .gt_bottom_border {
+#jvqitwksjj .gt_bottom_border {
 border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#hmjvqitwks .gt_col_headings {
+#jvqitwksjj .gt_col_headings {
 border-top-style: solid;
 border-top-width: 2px;
 border-top-color: #FFFFFF;
@@ -2753,7 +2789,7 @@ border-right-style: none;
 border-right-width: 1px;
 border-right-color: #D3D3D3;
 }
-#hmjvqitwks .gt_col_heading {
+#jvqitwksjj .gt_col_heading {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -2772,7 +2808,7 @@ padding-left: 5px;
 padding-right: 5px;
 overflow-x: hidden;
 }
-#hmjvqitwks .gt_column_spanner_outer {
+#jvqitwksjj .gt_column_spanner_outer {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -2783,13 +2819,13 @@ padding-bottom: 0;
 padding-left: 4px;
 padding-right: 4px;
 }
-#hmjvqitwks .gt_column_spanner_outer:first-child {
+#jvqitwksjj .gt_column_spanner_outer:first-child {
 padding-left: 0;
 }
-#hmjvqitwks .gt_column_spanner_outer:last-child {
+#jvqitwksjj .gt_column_spanner_outer:last-child {
 padding-right: 0;
 }
-#hmjvqitwks .gt_column_spanner {
+#jvqitwksjj .gt_column_spanner {
 border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #2C3E50;
@@ -2800,10 +2836,10 @@ overflow-x: hidden;
 display: inline-block;
 width: 100%;
 }
-#hmjvqitwks .gt_spanner_row {
+#jvqitwksjj .gt_spanner_row {
 border-bottom-style: hidden;
 }
-#hmjvqitwks .gt_group_heading {
+#jvqitwksjj .gt_group_heading {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -2828,7 +2864,7 @@ border-right-color: #D3D3D3;
 vertical-align: middle;
 text-align: left;
 }
-#hmjvqitwks .gt_empty_group_heading {
+#jvqitwksjj .gt_empty_group_heading {
 padding: 0.5px;
 color: #333333;
 background-color: #FFFFFF;
@@ -2842,13 +2878,13 @@ border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 vertical-align: middle;
 }
-#hmjvqitwks .gt_from_md > :first-child {
+#jvqitwksjj .gt_from_md > :first-child {
 margin-top: 0;
 }
-#hmjvqitwks .gt_from_md > :last-child {
+#jvqitwksjj .gt_from_md > :last-child {
 margin-bottom: 0;
 }
-#hmjvqitwks .gt_row {
+#jvqitwksjj .gt_row {
 padding-top: 6px;
 padding-bottom: 6px;
 padding-left: 5px;
@@ -2866,7 +2902,7 @@ border-right-color: #D3D3D3;
 vertical-align: middle;
 overflow-x: hidden;
 }
-#hmjvqitwks .gt_stub {
+#jvqitwksjj .gt_stub {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -2878,7 +2914,7 @@ border-right-color: #D3D3D3;
 padding-left: 5px;
 padding-right: 5px;
 }
-#hmjvqitwks .gt_stub_row_group {
+#jvqitwksjj .gt_stub_row_group {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -2891,13 +2927,13 @@ padding-left: 5px;
 padding-right: 5px;
 vertical-align: top;
 }
-#hmjvqitwks .gt_row_group_first td {
+#jvqitwksjj .gt_row_group_first td {
 border-top-width: 2px;
 }
-#hmjvqitwks .gt_row_group_first th {
+#jvqitwksjj .gt_row_group_first th {
 border-top-width: 2px;
 }
-#hmjvqitwks .gt_summary_row {
+#jvqitwksjj .gt_summary_row {
 color: #333333;
 background-color: #FFFFFF;
 text-transform: inherit;
@@ -2906,14 +2942,14 @@ padding-bottom: 8px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#hmjvqitwks .gt_first_summary_row {
+#jvqitwksjj .gt_first_summary_row {
 border-top-style: solid;
 border-top-color: #D3D3D3;
 }
-#hmjvqitwks .gt_first_summary_row.thick {
+#jvqitwksjj .gt_first_summary_row.thick {
 border-top-width: 2px;
 }
-#hmjvqitwks .gt_last_summary_row {
+#jvqitwksjj .gt_last_summary_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -2922,7 +2958,7 @@ border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#hmjvqitwks .gt_grand_summary_row {
+#jvqitwksjj .gt_grand_summary_row {
 color: #333333;
 background-color: #FFFFFF;
 text-transform: inherit;
@@ -2931,7 +2967,7 @@ padding-bottom: 8px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#hmjvqitwks .gt_first_grand_summary_row {
+#jvqitwksjj .gt_first_grand_summary_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -2940,7 +2976,7 @@ border-top-style: double;
 border-top-width: 6px;
 border-top-color: #D3D3D3;
 }
-#hmjvqitwks .gt_last_grand_summary_row_top {
+#jvqitwksjj .gt_last_grand_summary_row_top {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -2949,10 +2985,10 @@ border-bottom-style: double;
 border-bottom-width: 6px;
 border-bottom-color: #D3D3D3;
 }
-#hmjvqitwks .gt_striped {
+#jvqitwksjj .gt_striped {
 background-color: rgba(128, 128, 128, 0.05);
 }
-#hmjvqitwks .gt_table_body {
+#jvqitwksjj .gt_table_body {
 border-top-style: solid;
 border-top-width: 2px;
 border-top-color: #D3D3D3;
@@ -2960,7 +2996,7 @@ border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #FFFFFF;
 }
-#hmjvqitwks .gt_footnotes {
+#jvqitwksjj .gt_footnotes {
 color: #333333;
 background-color: #FFFFFF;
 border-bottom-style: none;
@@ -2973,7 +3009,7 @@ border-right-style: none;
 border-right-width: 2px;
 border-right-color: #D3D3D3;
 }
-#hmjvqitwks .gt_footnote {
+#jvqitwksjj .gt_footnote {
 margin: 0px;
 font-size: 90%;
 padding-top: 4px;
@@ -2981,7 +3017,7 @@ padding-bottom: 4px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#hmjvqitwks .gt_sourcenotes {
+#jvqitwksjj .gt_sourcenotes {
 color: #333333;
 background-color: #FFFFFF;
 border-bottom-style: none;
@@ -2994,64 +3030,64 @@ border-right-style: none;
 border-right-width: 2px;
 border-right-color: #D3D3D3;
 }
-#hmjvqitwks .gt_sourcenote {
+#jvqitwksjj .gt_sourcenote {
 font-size: 90%;
 padding-top: 4px;
 padding-bottom: 4px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#hmjvqitwks .gt_left {
+#jvqitwksjj .gt_left {
 text-align: left;
 }
-#hmjvqitwks .gt_center {
+#jvqitwksjj .gt_center {
 text-align: center;
 }
-#hmjvqitwks .gt_right {
+#jvqitwksjj .gt_right {
 text-align: right;
 font-variant-numeric: tabular-nums;
 }
-#hmjvqitwks .gt_font_normal {
+#jvqitwksjj .gt_font_normal {
 font-weight: normal;
 }
-#hmjvqitwks .gt_font_bold {
+#jvqitwksjj .gt_font_bold {
 font-weight: bold;
 }
-#hmjvqitwks .gt_font_italic {
+#jvqitwksjj .gt_font_italic {
 font-style: italic;
 }
-#hmjvqitwks .gt_super {
+#jvqitwksjj .gt_super {
 font-size: 65%;
 }
-#hmjvqitwks .gt_footnote_marks {
+#jvqitwksjj .gt_footnote_marks {
 font-size: 75%;
 vertical-align: 0.4em;
 position: initial;
 }
-#hmjvqitwks .gt_asterisk {
+#jvqitwksjj .gt_asterisk {
 font-size: 100%;
 vertical-align: 0;
 }
-#hmjvqitwks .gt_indent_1 {
+#jvqitwksjj .gt_indent_1 {
 text-indent: 5px;
 }
-#hmjvqitwks .gt_indent_2 {
+#jvqitwksjj .gt_indent_2 {
 text-indent: 10px;
 }
-#hmjvqitwks .gt_indent_3 {
+#jvqitwksjj .gt_indent_3 {
 text-indent: 15px;
 }
-#hmjvqitwks .gt_indent_4 {
+#jvqitwksjj .gt_indent_4 {
 text-indent: 20px;
 }
-#hmjvqitwks .gt_indent_5 {
+#jvqitwksjj .gt_indent_5 {
 text-indent: 25px;
 }
-#hmjvqitwks .katex-display {
+#jvqitwksjj .katex-display {
 display: inline-flex !important;
 margin-bottom: 0.75em !important;
 }
-#hmjvqitwks div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#jvqitwksjj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
 height: 0px !important;
 }
 </style>

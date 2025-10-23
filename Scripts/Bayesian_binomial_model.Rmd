@@ -1,12 +1,13 @@
 ---
-title: "Bayesian binomial model"
+title: "**Bayesian binomial model**"
 subtitle: "Estimation of the frequency of neurocysticercosis among people with headache"
-author: "Mohammad Shah Jalal, University of Montreal"
+author: "**Mohammad Shah Jalal, University of Montreal**"
 date: '2025-01-11'
 output: 
  html_document:
     toc: true
     toc_float: true
+    number_sections: true
 editor_options: 
   chunk_output_type: console
 ---
@@ -44,7 +45,7 @@ opts_chunk$set(echo = TRUE)
 
 Before talking about Bayesian binomial model, let's review some important concepts.
 
-# Binomial distribution
+# **Binomial distribution**
 
 The **binomial distribution** is a probability distribution that summarizes the likelihood that a value will take one of two independent states across a given number of trials. The binomial distribution is frequently used to model the number of successes in a sample of size drawn **with replacement (that is important)** from a population.
 
@@ -141,7 +142,7 @@ This interpretation aligns much better with how researchers naturally think abou
 
 ------------------------------------------------------------------------
 
-# How Bayesian statistics work?
+# **How Bayesian statistics work?**
 
 Bayesian statistics provide a way to update our beliefs about an unknown parameter (such as disease prevalence) based on observed data.
 
@@ -171,7 +172,7 @@ From the posterior, we can calculate a **credible interval**, which gives the ra
 
 For a bit more about Bayesian dtatistics visit: <https://jalal2025.quarto.pub/my-web/Bayesian_statistics_course.html>
 
-# Bayesian binomial model
+# **Bayesian binomial model**
 
 The **Bayesian binomial model** is a statistical approach used to estimate the **proportion or prevalence of a binary outcome**, such as the presence or absence of a disease. It combines **observed data** with **prior knowledge** through Bayes’ theorem to generate a **posterior distribution** for the parameter of interest.
 
@@ -340,9 +341,9 @@ For this purpose,
 
 -   We present the results in a nice table.
 
-# Applying Bayesian binomial model with real data
+# **Applying Bayesian binomial model with real data**
 
-## Description of data set
+## **Description of data set**
 
 We have recently completed a brief systematic review of research articles reporting the frequency of neurocysticercosis (NCC, a parasitic disease of human central nervous system caused by the larval stage of zoonotic tapeworm, *Taenia solium*) among people with headache (PWH). In that review, we identified 10 studies which met the inclusion criteria (data on NCC among PWH, and NCC diagnosis was based on brain imaging). The **data set** is given in the "***Data***" folder. The data is in MS Excel (sheet = PWH). There are only five variables in this the data set:
 
@@ -365,6 +366,7 @@ tdat
 library(here)
 tdat <- read_excel(here("Data", "NCC_among_PWH.xlsx"))                  
 
+tdat
 ## Working data set
 df <- tdat
 ```
@@ -411,7 +413,7 @@ Now, we want to calculate the proportion of NCC among PWH for each row of the da
 
 4.  We will check the convergence of the models, and results.
 
-## Model
+## **Model**
 
 The model assumes that the number of NCC cases $y_i$ in study $i$ follows a binomial distribution with study-specific sample size $n_i$ and probability parameter $p_i$:
 
@@ -459,7 +461,7 @@ compiled_model <- stan_model(model_code = model_code)
 
 ```
 
-## Data preparation
+## **Data preparation**
 
 ```{r}
 df <- df %>% 
@@ -480,7 +482,7 @@ model_data <- list(
 
 ```
 
-## Fit the model
+## **Fit the model**
 
 ```{r eval=FALSE}
 
@@ -503,9 +505,9 @@ library(here)
 saveRDS(fit, file = here("Outputs", "Bayesian_model_results.rds"))
 ```
 
-## Results
+## **Results**
 
-### Model convergence checking
+### **Model convergence checking**
 
 First, reload the model and print the results
 
@@ -545,7 +547,7 @@ So far, we have calculated the prevalence proportion for multiple studies using 
 
 Now, we want to present the results in a nice table.
 
-### Creating a table for publication
+### **Creating a table for publication**
 
 ```{r}
 
@@ -579,7 +581,6 @@ df2 <- df %>%
   select(id,first_author,study_setting,Prop)
 
 
-# More robust table code:
 table <- df2 %>%
   arrange(id) %>% 
   gt() %>% 
@@ -587,7 +588,19 @@ table <- df2 %>%
     id = "Study ID",
     first_author = "Reference", 
     study_setting = "Setting",
-    Prop = "Bayesian estimate\n%(95% CrI)"
+    Prop = md("Bayesian estimate<br>%(95% CrI)")
+  ) %>%
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_column_labels()
+  ) %>%
+  tab_style(
+    style = cell_text(align = "center"),
+    locations = cells_column_labels()
+  ) %>%
+  tab_style(
+    style = cell_text(align = "center"),
+    locations = cells_body()
   ) %>%
   fmt_number(
     columns = c(id),
@@ -597,11 +610,11 @@ table <- df2 %>%
             locations = cells_body(rows = seq(1, nrow(df2), 2))) %>% 
   tab_options(
     table.font.size = px(12),
-    heading.align = "center",
     table.font.names = "Times New Roman"
   )
 
 table
+
 ```
 
 Make the table a bit pretty
